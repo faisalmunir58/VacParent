@@ -1,5 +1,7 @@
 {
   "name": "VacParent",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

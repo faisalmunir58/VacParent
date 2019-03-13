@@ -4,6 +4,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { ToastService } from 'src/app/shared/toast.service';
 import { Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,7 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
+    private storage: Storage,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private loginService: LoginService,
@@ -24,11 +27,22 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.skipLoginIfAlreadyLoggedIn();
     this.fg = this.formBuilder.group({
       'MobileNumber': [null, Validators.required],
       'Password': [null, Validators.required],
       'CountryCode': ['92'],
       'UserType': ['PARENT']
+    });
+  }
+
+  skipLoginIfAlreadyLoggedIn() {
+    this.storage.get(environment.IS_LOGGED_IN).then(value => {
+      if (value) {
+        this.loginService.changeState(value);
+        this.router.navigate(['members/dashboard']);
+      }
     });
   }
 
@@ -41,7 +55,7 @@ export class LoginPage implements OnInit {
         if (res.IsSuccess) {
           loading.dismiss();
           this.loginService.changeState(true);
-          // this.storage.set(environment.IS_LOGGED_IN, true);
+          this.storage.set(environment.IS_LOGGED_IN, true);
           this.router.navigate(['/members/']);
         }
         else {

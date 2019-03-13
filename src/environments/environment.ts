@@ -6,6 +6,7 @@ export const environment = {
   production: false,
 
   BASE_URL: "http://vac-api.afz-sol.com/api/",
+  IS_LOGGED_IN: "guard",
 
 };
 

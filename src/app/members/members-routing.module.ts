@@ -8,12 +8,11 @@ const routes: Routes = [
     component: MembersPage,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' }
+      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
+      { path: 'mychilds', loadChildren: './mychilds/mychilds.module#MychildsPageModule' },
     ]
   },
 ];
-
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
