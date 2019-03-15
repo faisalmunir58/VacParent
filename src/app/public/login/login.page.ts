@@ -55,6 +55,7 @@ export class LoginPage implements OnInit {
         if (res.IsSuccess) {
           loading.dismiss();
           this.loginService.changeState(true);
+          this.storage.set(environment.USER_ID, res.ResponseData.MobileNumber);
           this.storage.set(environment.IS_LOGGED_IN, true);
           this.router.navigate(['/members/']);
         }

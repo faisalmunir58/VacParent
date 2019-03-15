@@ -11,7 +11,10 @@ const routes: Routes = [
   {
     path: '',
     component: MychildsPage
-  }
+  },
+  { path: 'cdoctor/:id', loadChildren: './cdoctor/cdoctor.module#CdoctorPageModule' },
+  { path: 'vaccines/:id', loadChildren: './vaccines/vaccines.module#VaccinesPageModule' },
+  { path: 'followup/:id', loadChildren: './followup/followup.module#FollowupPageModule' },
 ];
 
 @NgModule({
@@ -23,4 +26,4 @@ const routes: Routes = [
   ],
   declarations: [MychildsPage]
 })
-export class MychildsPageModule {}
+export class MychildsPageModule { }

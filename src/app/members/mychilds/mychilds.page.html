@@ -1,9 +1,66 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>mychilds</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> MyChild </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
+  <div *ngFor="let child of childs">
+
+
+    <ion-card *ngIf="child.Gender=='Girl'" style="border: rgb(245, 12, 167) 2px solid">
+      <ion-avatar><img src="../../assets/female.png"></ion-avatar>
+
+      <ion-item>
+        <ion-label>{{child.Name}}</ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <p>
+          <ion-icon color="primary" name="person"></ion-icon>{{child.Clinic.Doctor.DisplayName}}
+        </p>
+        <ion-button size="small" fill="outline" color="tertiary" routerLink="/members/mychilds/cdoctor/{{child.ID}}">
+          Change Doctor
+        </ion-button>
+        <ion-button disabled="false" size="small" fill="outline" color="tertiary"
+          routerLink="/members/mychilds/vaccines/{{child.ID}}">
+          Vaccine
+        </ion-button>
+        <ion-button size="small" fill="outline" color="tertiary" routerLink="/members/mychilds/followup/{{child.ID}}">
+          Follow Up
+        </ion-button>
+      </ion-card-content>
+
+    </ion-card>
+
+    <ion-card *ngIf="child.Gender=='Boy'" style="border: rgb(8, 28, 206) 2px solid">
+      <ion-avatar><img src="../../assets/male.png"></ion-avatar>
+
+      <ion-item>
+        <ion-label>{{child.Name}}</ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <p>
+          <ion-icon color="primary" name="person"></ion-icon>{{child.Clinic.Doctor.DisplayName}}
+        </p>
+        <ion-button size="small" fill="outline" color="tertiary" routerLink="/members/mychilds/cdoctor/{{child.ID}}">
+          Change Doctor
+        </ion-button>
+        <ion-button disabled="false" size="small" fill="outline" color="tertiary"
+          routerLink="/members/mychilds/vaccines/{{child.ID}}">
+          Vaccine
+        </ion-button>
+        <ion-button size="small" fill="outline" color="tertiary" routerLink="/members/mychilds/followup/{{child.ID}}">
+          Follow Up
+        </ion-button>
+      </ion-card-content>
+
+    </ion-card>
+  </div>
 
 </ion-content>

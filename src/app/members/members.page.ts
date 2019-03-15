@@ -12,6 +12,11 @@ export class MembersPage implements OnInit {
       url: '/members/dashboard',
       icon: 'home'
     },
+    {
+      title: 'My Childs',
+      url: '/members/mychilds',
+      icon: 'home'
+    },
   ];
 
   constructor(private storage: Storage) { }
