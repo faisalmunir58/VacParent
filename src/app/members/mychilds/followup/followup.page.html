@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>followup</ion-title>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/members/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Follow up</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <h1 *ngIf="childData == 0" style="color: red;">No Follow Up.</h1>
+  <div *ngFor="let child of childData">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{child.Child.Name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Date: {{child.CurrentVisitDate}}</p>
+        <p>Disease: {{child.Disease}}</p>
+        <p>Weight: {{child.Weight}}</p>
+        <p>Height:{{child.Height}}</p>
+        <p>OFC:{{child.OFC}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>
