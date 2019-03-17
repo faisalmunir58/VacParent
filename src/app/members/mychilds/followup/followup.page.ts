@@ -40,7 +40,6 @@ export class FollowupPage implements OnInit {
         if (res.IsSuccess) {
           this.childData = res.ResponseData;
           loading.dismiss();
-          console.log(this.childData);
         }
         else {
           loading.dismiss();

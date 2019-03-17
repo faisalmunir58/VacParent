@@ -38,7 +38,6 @@ export class VaccinesPage implements OnInit {
         if (res.IsSuccess) {
           this.vaccine = res.ResponseData;
           this.dataGrouping = this.groupBy(this.vaccine, 'Date');
-          console.log(this.dataGrouping);
           loading.dismiss();
           this.vaccine.forEach(doc => {
             doc.Date = moment(doc.Date, "DD-MM-YYYY").format('YYYY-MM-DD');

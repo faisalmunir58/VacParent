@@ -22,7 +22,7 @@ export class MychildsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.storage.get(environment.USER_ID).then((val) => {
+    this.storage.get(environment.Mobile_Number).then((val) => {
       this.childID = val;
     });
     this.getClinics();
@@ -36,7 +36,6 @@ export class MychildsPage implements OnInit {
       res => {
         if (res.IsSuccess) {
           this.childs = res.ResponseData;
-          console.log(this.childs);
           loading.dismiss();
         }
         else {

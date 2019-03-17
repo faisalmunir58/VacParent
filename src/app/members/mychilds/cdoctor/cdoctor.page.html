@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cdoctor</ion-title>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/members/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Change Doctor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
+  <ion-card *ngFor="let d of doctors">
+    <!-- <ion-avatar><img src="{{d.ProfileImage}}"></ion-avatar> -->
+    <ion-card-header>
+      <ion-card-title color="primary">{{d.DisplayName}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngFor="let c of d.Clinics">
+        <p>{{c.Name}}
+          <ion-button *ngIf="d.ChildDTO.ClinicID!=c.ID" slot="end" size="small" shape="round" fill="outline"
+            (click)="alertChangeDoctor(c.ID)">select
+          </ion-button>
+        </p>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
